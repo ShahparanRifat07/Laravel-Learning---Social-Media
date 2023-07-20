@@ -1,5 +1,5 @@
 <div class="ui secondary  menu">
-    <a class="active item">
+    <a href="{{route('home')}}" class="active item">
       Home
     </a>
     <a class="item">
@@ -16,17 +16,18 @@
         </div>
       </div>
       @auth
+      <a class="ui item" href="">
+        {{auth()->user()->name}}
+      </a>
       <form class="ui item" action="{{route('logout')}}" method="POST">
         @csrf
-        <a class="ui item">
-            Logout
-          </a>
+        <button class="ui item">Logout</button>
       </form>
       @else
-      <a class="ui item">
+      <a href="{{route('register')}}" class="ui item">
         Register
       </a>
-      <a class="ui item">
+      <a href="{{route('login')}}" class="ui item">
         Login
       </a>
       @endauth

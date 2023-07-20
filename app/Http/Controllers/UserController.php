@@ -36,4 +36,29 @@ class UserController extends Controller
             return view('register');
         }
     }
+
+
+    public function login(Request $request){
+        if($request->isMethod('post')){
+            $incoming_fields = $request->validate([
+                "email" => ['required'],
+                "password" => ['required','min:6','max:100'],
+            ]);
+
+            if(auth()->attempt(['email' =>$incoming_fields['email'],'password'=>$incoming_fields['password']])){
+                $request->session()->regenerate();
+                return redirect('/');
+            }else{
+                return redirect('login');
+            }
+        }
+        if($request->isMethod('get')){
+            return view('login');
+        }
+    }
+
+    public function logout(){
+        auth()->logout();
+        return redirect('/');
+    }
 }

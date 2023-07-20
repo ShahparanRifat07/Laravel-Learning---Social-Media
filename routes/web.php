@@ -17,8 +17,10 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::any('register/',[UserController::class,'register'])->name('register');
+
+Route::any('login/',[UserController::class,'login'])->name('login');
 
 Route::post('logout/',[UserController::class,'logout'])->name('logout');
