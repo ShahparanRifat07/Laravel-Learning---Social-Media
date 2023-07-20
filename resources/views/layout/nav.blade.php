@@ -2,8 +2,8 @@
     <a href="{{route('home')}}" class="active item">
       Home
     </a>
-    <a class="item">
-      Messages
+    <a href="{{route('create-post')}}" class="item">
+      Create Post
     </a>
     <a class="item">
       Friends
